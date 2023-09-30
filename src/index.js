@@ -15,12 +15,13 @@ refs.selectEl.addEventListener('change', onSelectElChange);
 function onSelectElChange(e) {
     refs.textLoadEl.classList.remove('is-hidden');
 
-    const catId = refs.selectEl.value
+    const catId = refs.selectEl.value;
+    
     fetchCatByBreed(catId).then(data => {
         refs.textLoadEl.classList.add('is-hidden');
         renderPage(data)
     }).catch(error => {
-        refs.textErrorEl.classList.remove('is-hidden')
+        refs.textErrorEl.classList.remove('is-hidden');
     })  
 };
 
@@ -32,7 +33,7 @@ fetchBreeds().then(data => {
 
     refs.selectEl.innerHTML = markup;
 }).catch(error => {
-    refs.textErrorEl.classList.remove('is-hidden')
+    refs.textErrorEl.classList.remove('is-hidden');
 });
 
 function renderPage(data) {
@@ -43,7 +44,7 @@ function renderPage(data) {
         <p class="text-cat-info">${data[0].breeds[0].temperament}</p>
         `
     refs.divEl.innerHTML = markup;
-}
+};
 
 
 
