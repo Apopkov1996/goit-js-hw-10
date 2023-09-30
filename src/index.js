@@ -10,9 +10,18 @@ const refs = {
     divEl: document.querySelector('.cat-info'),
 };
 
-refs.selectEl.addEventListener('click', onSelectElClick);
+refs.selectEl.addEventListener('change', onSelectElClick);
 
 function onSelectElClick() {
     
 };
+
+fetchBreeds().then(data => {
+    const markup = data.map(el => {
+        return `<option value='${el.id}'>${el.name}</option>`
+    }).join('');
+
+    refs.selectEl.innerHTML = markup;
+})
+
 
