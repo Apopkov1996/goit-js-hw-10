@@ -35,12 +35,12 @@ function onSelectElChange() {
 
 
 fetchBreeds().then(data => {
-    let markup = data
+    const markup = data
         .map(el => {
         return `<option value='${el.id}'>${el.name}</option>`
     }).join('');
 
-    refs.selectEl.insertAdjacentHTML('beforeend', markup);
+    refs.selectEl.innerHTML= markup;
     // new SlimSelect({
     //     select: '.breed-select',
     // })
