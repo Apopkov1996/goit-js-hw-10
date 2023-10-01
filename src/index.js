@@ -1,6 +1,6 @@
 import { fetchBreeds, fetchCatByBreed } from "./js/cat-api";
 import SlimSelect from "slim-select";
-import Notiflix from 'notiflix';
+
 
 
 const refs = {
@@ -65,17 +65,6 @@ function renderPage(data) {
     refs.divEl.innerHTML = markup;
 };
 
-function Error(error) {
-    selector.classList.remove('is-hidden');
-    loader.classList.replace('loader', 'is-hidden');
-
-    Notify.failure('Oops! Something went wrong! Try reloading the page!', {
-        position: 'center-center',
-        timeout: 5000,
-        width: '400px',
-        fontSize: '24px'
-    });
-};
 
 
 
