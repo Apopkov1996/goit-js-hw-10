@@ -8,12 +8,14 @@ const refs = {
 };
 
 refs.textLoadEl.classList.add('is-hidden');
-refs.textErrorEl.classList.add('is-hidden')
+refs.textErrorEl.classList.add('is-hidden');
+refs.divEl.classList.add('is-hidden');
 
 refs.selectEl.addEventListener('change', onSelectElChange);
 
 function onSelectElChange(e) {
     refs.textLoadEl.classList.remove('is-hidden');
+    refs.divEl.classList.remove('is-hidden');
 
     const catId = refs.selectEl.value;
     
@@ -38,10 +40,16 @@ fetchBreeds().then(data => {
 
 function renderPage(data) {
     const markup =  `
-        <h2 class="header-cat-info">${data[0].breeds[0].name}</h2>
-        <img class="img-cat-info" src="${data[0].url}" alt="cat" width = "400">
-        <p class="text-cat-info">${data[0].breeds[0].description}</p>
-        <p class="text-cat-info">${data[0].breeds[0].temperament}</p>
+        <h2 class="header-cat-info ">${data[0].breeds[0].name}</h2>
+        <section class = "section-cat">
+        <div class = "div-cat-left">
+        <img class="img-cat-info" src="${data[0].url}" alt="cat" width = "600" height = "400">
+        </div>
+        <div class = "div-cat-right">
+        <p class="text-cat-info-first">${data[0].breeds[0].description}</p>
+        <p class="text-cat-info-second">${data[0].breeds[0].temperament}</p>
+        </div>
+        </section>
         `
     refs.divEl.innerHTML = markup;
 };
