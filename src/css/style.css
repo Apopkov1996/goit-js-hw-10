@@ -85,6 +85,7 @@ img {
 .loader {
   display: inline-flex;
   margin: 0 auto;
+  margin: 0 auto;
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -96,7 +97,7 @@ img {
 }
 .loader::after {
   display: inline-flex;
-  margin: auto;
+  margin: 0 auto;
   content: '';
   box-sizing: border-box;
   position: absolute;

@@ -1,8 +1,6 @@
 import { fetchBreeds, fetchCatByBreed } from "./js/cat-api";
 import SlimSelect from "slim-select";
 
-
-
 const refs = {
     selectEl: document.querySelector('.breed-select'),
     textLoadEl: document.querySelector('.loader'),
@@ -21,15 +19,18 @@ refs.selectEl.addEventListener('change', onSelectElChange);
 
 function onSelectElChange() {
     refs.textLoadEl.classList.remove('is-hidden');
-    refs.divEl.classList.remove('is-hidden');
+    
 
     const catId = refs.selectEl.value;
     
     fetchCatByBreed(catId).then(data => {
         refs.textLoadEl.classList.add('is-hidden');
+        refs.divEl.classList.remove('is-hidden');
         renderPage(data)
     }).catch(error => {
         refs.textErrorEl.classList.remove('is-hidden');
+        refs.textLoadEl.classList.add('is-hidden');
+        refs.divEl.classList.add('is-hidden');
     })  
 };
 
