@@ -10,11 +10,6 @@ const refs = {
     divEl: document.querySelector('.cat-info'),
 };
 
-// refs.textLoadEl.classList.add('is-hidden');
-// refs.textLoadEl.classList.add('.loader')
-// refs.textErrorEl.classList.add('is-hidden');
-// refs.divEl.classList.add('is-hidden');
-
 refs.textLoadEl.textContent = ''
 
 refs.selectEl.addEventListener('change', onSelectElChange);
