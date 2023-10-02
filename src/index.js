@@ -19,12 +19,12 @@ refs.selectEl.addEventListener('change', onSelectElChange);
 
 function onSelectElChange() {
     refs.textLoadEl.classList.remove('is-hidden');
-    
-
+    refs.divEl.classList.add('is-hidden');
     const catId = refs.selectEl.value;
     
     fetchCatByBreed(catId).then(data => {
         refs.textLoadEl.classList.add('is-hidden');
+        refs.textErrorEl.classList.add('is-hidden');
         refs.divEl.classList.remove('is-hidden');
         renderPage(data)
     }).catch(error => {

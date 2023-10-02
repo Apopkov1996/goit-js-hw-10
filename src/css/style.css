@@ -83,21 +83,16 @@ img {
 }
 
 .loader {
-  display: inline-flex;
-  margin: 0 auto;
-  margin: 0 auto;
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  /* display: inline-block; */
+  display: inline-block;
   border-top: 4px solid #6ed457;
   border-right: 4px solid transparent;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
 .loader::after {
-  display: inline-flex;
-  margin: 0 auto;
   content: '';
   box-sizing: border-box;
   position: absolute;
