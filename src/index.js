@@ -1,5 +1,7 @@
 import { fetchBreeds, fetchCatByBreed } from "./js/cat-api";
 import SlimSelect from "slim-select";
+import 'slim-select/dist/slimselect.css';
+import Notiflix from "notiflix";
 
 const refs = {
     selectEl: document.querySelector('.breed-select'),
@@ -8,10 +10,10 @@ const refs = {
     divEl: document.querySelector('.cat-info'),
 };
 
-refs.textLoadEl.classList.add('is-hidden');
-refs.textLoadEl.classList.add('.loader')
-refs.textErrorEl.classList.add('is-hidden');
-refs.divEl.classList.add('is-hidden');
+// refs.textLoadEl.classList.add('is-hidden');
+// refs.textLoadEl.classList.add('.loader')
+// refs.textErrorEl.classList.add('is-hidden');
+// refs.divEl.classList.add('is-hidden');
 
 refs.textLoadEl.textContent = ''
 
@@ -21,13 +23,15 @@ function onSelectElChange() {
     refs.textLoadEl.classList.remove('is-hidden');
     refs.divEl.classList.add('is-hidden');
     const catId = refs.selectEl.value;
-    
+    refs.textErrorEl.classList.add('is-hidden');
+
     fetchCatByBreed(catId).then(data => {
         refs.textLoadEl.classList.add('is-hidden');
         refs.textErrorEl.classList.add('is-hidden');
         refs.divEl.classList.remove('is-hidden');
         renderPage(data)
     }).catch(error => {
+        Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!');
         refs.textErrorEl.classList.remove('is-hidden');
         refs.textLoadEl.classList.add('is-hidden');
         refs.divEl.classList.add('is-hidden');
@@ -42,11 +46,13 @@ fetchBreeds().then(data => {
     }).join('');
 
     refs.selectEl.innerHTML= markup;
-    // new SlimSelect({
-    //     select: '.breed-select',
-    // })
+    new SlimSelect({
+        select: refs.selectEl,
+    })
+    refs.selectEl.classList.remove('is-hidden')
     
 }).catch(error => {
+    Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!');
     refs.textErrorEl.classList.remove('is-hidden');
 });
 
